@@ -1,3 +1,62 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import "tailwindcss";
+body {
+  font-family: "Inter", "Nunito", "Archivo", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  background: #0e0e0e;
+}
+
+/* Cấu hình biến toàn cục cho chế độ dark */
+:root {
+  --width-siderbar: 18rem;
+
+  /* Font */
+  --font-family-sans: "Inter", "Nunito", "Archivo", sans-serif;
+
+  /* Backgrounds */
+  --color-bg-main: #0e0e0e;
+  --color-bg-item: #1c1c1c;
+  --bg-item: #1c1c1c;
+  --bg-item-hover: #242424;
+
+  /* Text */
+  --color-text-main: #8c5ece;
+  --color-text-hover: #8c5ece;
+  --color-text-muted: #ffffff99;
+  --color-text-title: #ddd;
+  --color-text-item: #ffffff99;
+  --color-text-sub: #a885da;
+
+  /* Border */
+  --color-border: #292929;
+  --border-item: #2b2929;
+
+  /* Button */
+  --bg-btn: #5a2e98;
+  --bg-btn-hover: #713abf;
+}
+
+/* Chế độ sáng */
+.light {
+  --background: #edf1f5;
+}
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  max-width: 1700px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.active-btn {
+  background-color: var(--bg-btn) !important;
+  color: white !important;
+}

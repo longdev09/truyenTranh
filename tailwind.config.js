@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,mdx}"],
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -24,6 +23,10 @@ export default {
         "slide-down": "slide-down 0.3s ease-out forwards",
       },
     },
+  },
+  corePlugins: {
+    // đảm bảo `backgroundClip` không bị disable
+    backgroundClip: true,
   },
   plugins: [],
 };
