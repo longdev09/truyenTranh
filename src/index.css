@@ -22,6 +22,7 @@ body {
   --bg-item-hover: #242424;
 
   /* Text */
+  --color-text-white: #fff;
   --color-text-main: #8c5ece;
   --color-text-hover: #8c5ece;
   --color-text-muted: #ffffff99;

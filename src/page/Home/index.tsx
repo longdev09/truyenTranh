@@ -1,5 +1,13 @@
+import NewManga from "./components";
+
 const Home = () => {
-  return <div>Nguyen Bach Long</div>;
+  return (
+    <div className="overflow-hidden">
+      <div className="container">
+        <NewManga />
+      </div>
+    </div>
+  );
 };
 
 export default Home;
