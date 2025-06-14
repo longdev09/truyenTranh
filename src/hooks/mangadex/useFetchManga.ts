@@ -4,6 +4,8 @@ import { MangadexTypes } from "../../types";
 import { useMemo } from "react";
 import { MangadexUtils } from "../../utils";
 
+// lay danh sach chapter
+
 const useFetchManga = (options: MangadexTypes.GetSearchMangaRequestOptions) => {
   if (options.title) {
     options.title = encodeURIComponent(options.title);

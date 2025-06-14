@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar, Autoplay, Pagination } from "swiper/modules";
-import { MangadexApi } from "../../../api";
-import { useFetchManga } from "../../../hooks/mangadex";
+import { MangadexApi } from "../../../../api";
+import { useFetchManga } from "../../../../hooks/mangadex";
 import NewItem from "./NewItem";
 
 // @ts-ignore
@@ -12,9 +12,9 @@ import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 // @ts-ignore
 import "swiper/css/pagination";
-import "../../../styles/swiper-custom.css";
+import "../../../../styles/swiper-custom.css";
 
-import { MangadexUtils } from "../../../utils";
+import { MangadexUtils } from "../../../../utils";
 const NewManga = () => {
   const { data: mangaList } = useFetchManga({
     order: {

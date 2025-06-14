@@ -1,4 +1,4 @@
-import { MangadexTypes } from "../../../types";
+import { MangadexTypes } from "../../../../types";
 
 interface NewItemProp {
   id?: string;
@@ -68,10 +68,10 @@ const NewItem = (props: NewItemProp) => {
             src={props.imgBg}
             alt={props.title}
             className="object-cover w-full h-full"
-            onError={(e) => {
-              e.currentTarget.src =
-                "https://via.placeholder.com/400x600?text=No+Image";
-            }}
+            // onError={(e) => {
+            //   e.currentTarget.src =
+            //     "https://via.placeholder.com/400x600?text=No+Image";
+            // }}
           />
         </div>
       </div>
