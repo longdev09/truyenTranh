@@ -10,11 +10,11 @@ const useFetchLastUpdate = (options: {
 }) => {
   const { page } = options;
 
-  let total = 0;
   let offset = 100 * page;
   if (offset > 10000) {
     offset = 10000 - 100;
   }
+
   const option: MangadexTypes.GetChapterRequestOptions = {
     includes: ["scanlation_group"],
     contentRating: options.contentRating,
@@ -27,9 +27,11 @@ const useFetchLastUpdate = (options: {
   };
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["fetchChapter"],
+    queryKey: ["fetchChapter", page],
     queryFn: () => MangadexApi.Chapter.getChapterList(option),
+    placeholderData: (previousData) => previousData,
   });
+
   const formatData = useMemo(() => {
     if (data?.result == "ok") {
       return data.data.map(

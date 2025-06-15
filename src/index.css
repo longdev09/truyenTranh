@@ -61,3 +61,8 @@ li {
   background-color: var(--bg-btn) !important;
   color: white !important;
 }
+
+.react-tooltip {
+  font-size: 12px !important;
+  padding: 2px 8px !important;
+}

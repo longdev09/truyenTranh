@@ -1,8 +1,6 @@
-import { useEffect, useMemo } from "react";
-import { MdOutlineTimer } from "react-icons/md";
+import { useEffect, useMemo, useState } from "react";
 import { MangadexApi } from "../../../../api";
 import CartHorizontal from "../../../../components/ui/CardHorizontal";
-import Title from "../../../../components/ui/Title.ui";
 import { useFetchLastUpdate } from "../../../../hooks/mangadex";
 import {
   updateManga,
@@ -11,14 +9,16 @@ import {
 import { useAppDispatch, useAppSelector } from "../../../../redux/store";
 import { MangadexTypes } from "../../../../types";
 import { MangadexUtils } from "../../../../utils";
-import { FaAngleLeft } from "react-icons/fa";
-import { FaAngleRight } from "react-icons/fa";
+import TitleUpdate from "./TitleUpdate";
+
 const UpdateManga = () => {
   const dispatch = useAppDispatch();
   const { mangas, statistics } = useAppSelector((state) => state.mangaSlice);
 
+  const [page, setPage] = useState(0);
+
   const { data: chapterListManga } = useFetchLastUpdate({
-    page: 0,
+    page,
     contentRating: [
       MangadexApi.Static.MangaContentRating.SAFE,
       MangadexApi.Static.MangaContentRating.SUGGESTIVE,
@@ -59,20 +59,20 @@ const UpdateManga = () => {
     }
   }, [chapterListManga]);
 
+  const handlePrevPage = () => {
+    if (page > 0) setPage(page - 1);
+  };
+  const handleNextPage = () => {
+    setPage(page + 1);
+  };
+  console.log(updates);
   return (
     <div className="mb-10">
-      <div className="flex flex-row">
-        <Title icon={<MdOutlineTimer />} text={"Truyện mới cập nhật"} />
-        <div className="flex flex-row items-center">
-          <span>
-            <FaAngleRight />
-          </span>
-          <span>
-            <FaAngleLeft />
-          </span>
-        </div>
-      </div>
-
+      <TitleUpdate
+        handlePrev={handlePrevPage}
+        handleNext={handleNextPage}
+        page={page}
+      />
       <div className="mt-3 grid grid-cols-2 gap-4">
         {Object.entries(updates).map(([mangaId, chapter]) => {
           const name = MangadexUtils.getTitle(mangas[mangaId]);
