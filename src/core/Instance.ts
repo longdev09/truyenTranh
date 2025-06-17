@@ -28,3 +28,4 @@ class InstanceApi {
 }
 
 export const Instance = new InstanceApi("http://localhost:3000/api/v1");
+//https://api.truyentranh.longdev.click/

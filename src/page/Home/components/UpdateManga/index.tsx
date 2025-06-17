@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { MangadexApi } from "../../../../api";
-import CartHorizontal from "../../../../components/ui/CardHorizontal";
+import CartVertical from "../../../../components/ui/CardVertical";
 import { useFetchLastUpdate } from "../../../../hooks/mangadex";
 import {
   updateManga,
@@ -14,16 +14,15 @@ import TitleUpdate from "./TitleUpdate";
 const UpdateManga = () => {
   const dispatch = useAppDispatch();
   const { mangas, statistics } = useAppSelector((state) => state.mangaSlice);
-
+  const [isPageChanging, setIsPageChanging] = useState(false);
   const [page, setPage] = useState(0);
-
-  const { data: chapterListManga } = useFetchLastUpdate({
+  const { data: chapterListManga, isLoading } = useFetchLastUpdate({
     page,
     contentRating: [
       MangadexApi.Static.MangaContentRating.SAFE,
       MangadexApi.Static.MangaContentRating.SUGGESTIVE,
       MangadexApi.Static.MangaContentRating.EROTICA,
-      MangadexApi.Static.MangaContentRating.SUGGESTIVE,
+      //MangadexApi.Static.MangaContentRating.SUGGESTIVE,
     ],
   });
 
@@ -56,16 +55,21 @@ const UpdateManga = () => {
           manga: manga,
         })
       );
+      setIsPageChanging(false);
     }
   }, [chapterListManga]);
 
   const handlePrevPage = () => {
+    setIsPageChanging(true);
+
     if (page > 0) setPage(page - 1);
   };
   const handleNextPage = () => {
+    setIsPageChanging(true);
+
     setPage(page + 1);
   };
-  console.log(updates);
+  const dangTaiDuLieu = isLoading || isPageChanging;
   return (
     <div className="mb-10">
       <TitleUpdate
@@ -73,7 +77,7 @@ const UpdateManga = () => {
         handleNext={handleNextPage}
         page={page}
       />
-      <div className="mt-3 grid grid-cols-2 gap-4">
+      <div className="mt-3 grid grid-cols-6 gap-4">
         {Object.entries(updates).map(([mangaId, chapter]) => {
           const name = MangadexUtils.getTitle(mangas[mangaId]);
           const imgAvata = MangadexUtils.getCoverImageAvata(mangas[mangaId]);
@@ -82,13 +86,13 @@ const UpdateManga = () => {
           );
           const follow = MangadexUtils.getFollow(statistics[mangaId]?.follows);
           return (
-            <CartHorizontal
+            <CartVertical
               imgAvata={imgAvata}
-              name={name}
-              id={mangaId}
+              title={name}
               rating={rating}
               follow={follow}
               chapter={chapter}
+              isLoading={dangTaiDuLieu}
             />
           );
         })}
