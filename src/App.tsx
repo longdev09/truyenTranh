@@ -2,7 +2,7 @@ import { Fragment, useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import MainLayout from "./components/layout/Main";
 import router from "./router/router";
-
+import "react-tooltip/dist/react-tooltip.css";
 //Component scroll lên đầu khi route đổi
 const ScrollToTop = () => {
   const { pathname } = useLocation();
