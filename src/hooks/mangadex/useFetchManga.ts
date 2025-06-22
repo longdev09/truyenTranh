@@ -23,6 +23,7 @@ const useFetchManga = (options: MangadexTypes.GetSearchMangaRequestOptions) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["fetchManga", options],
     queryFn: () => MangadexApi.Manga.getMangaList(options),
+    placeholderData: (previousData) => previousData,
   });
 
   const formatData = useMemo(() => {
