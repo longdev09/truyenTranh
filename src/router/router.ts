@@ -1,3 +1,4 @@
+import Detail from "../page/Detail";
 import Home from "../page/Home";
 
 interface RouteConfig {
@@ -10,6 +11,10 @@ const router: RouteConfig[] = [
   {
     path: "/",
     component: Home,
+  },
+  {
+    path: "/truyen-tranh/:id_manga",
+    component: Detail,
   },
 ];
 
