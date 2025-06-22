@@ -1,7 +1,6 @@
-import { FC } from "react";
+import CartVertical from "../../../../components/ui/CardVertical";
 import { MangadexTypes } from "../../../../types";
 import { MangadexUtils } from "../../../../utils";
-import CartVertical from "../../../../components/ui/CardVertical";
 
 interface MangaCardProps {
   mangaId: string;
