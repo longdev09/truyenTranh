@@ -27,7 +27,5 @@ class InstanceApi {
   }
 }
 
-export const Instance = new InstanceApi(
-  "https://api.truyentranh.longdev.click/api/v1"
-);
+export const Instance = new InstanceApi("http://localhost:3000/api/v1");
 //https://api.truyentranh.longdev.click/

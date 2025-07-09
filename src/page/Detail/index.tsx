@@ -1,9 +1,8 @@
-import { useParams } from "react-router-dom";
-import Heading from "./components/Heading";
-import ListChapter from "./components/Chapter";
-import Title from "../../components/ui/Title.ui";
-import { CiCircleList } from "react-icons/ci";
 import { AiFillLike } from "react-icons/ai";
+import { useParams } from "react-router-dom";
+import Title from "../../components/ui/Title.ui";
+import ListChapter from "./components/Chapter";
+import Heading from "./components/Heading";
 
 const Detail = () => {
   const { id_manga } = useParams();

@@ -18,7 +18,7 @@ export const useUpdateManga = () => {
       MangadexApi.Static.MangaContentRating.SAFE,
       MangadexApi.Static.MangaContentRating.SUGGESTIVE,
       MangadexApi.Static.MangaContentRating.EROTICA,
-      //MangadexApi.Static.MangaContentRating.SUGGESTIVE,
+      MangadexApi.Static.MangaContentRating.SUGGESTIVE,
     ],
   });
 
@@ -57,12 +57,10 @@ export const useUpdateManga = () => {
 
   const handlePrevPage = () => {
     setIsPageChanging(true);
-
     if (page > 0) setPage(page - 1);
   };
   const handleNextPage = () => {
     setIsPageChanging(true);
-
     setPage(page + 1);
   };
   const isCurrentlyLoading = isLoading || isPageChanging;
